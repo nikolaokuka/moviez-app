@@ -17,4 +17,9 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Open Sans', sans-serif;
   }
+
+  .App {
+    max-width: 120rem;
+    margin: 0 auto;
+  }
 `;

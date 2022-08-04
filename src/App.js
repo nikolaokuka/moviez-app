@@ -1,3 +1,5 @@
+import Navbar from './components/Navbar/Navbar';
+
 import {GlobalStyle} from './global.style';
 
 const App = () => {
@@ -5,7 +7,7 @@ const App = () => {
     <div className='App'>
       <GlobalStyle />
 
-      Moviez App
+      <Navbar />
     </div>
   );
 };
