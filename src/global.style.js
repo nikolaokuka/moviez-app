@@ -21,5 +21,15 @@ export const GlobalStyle = createGlobalStyle`
   .App {
     max-width: 120rem;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    margin-top: 10rem;
+    padding: 2rem 0;
+    position: relative;
+    flex: 1;
   }
 `;
