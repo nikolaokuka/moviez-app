@@ -20,24 +20,28 @@ const App = () => {
       .then((movies) => {
         setMovies(movies);
         setLoading(false);
+        setError(null);
       })
       .catch((error) => {
         console.warn(error.message);
         setError('Something went wrong!');
         setLoading(false);
+        setMovies(null);
       });
   }, []);
 
   const searchMovies = (searchInput) => {
-    getMovies('/search/movie', searchInput)
+    getMovies('/search/ovie', searchInput)
       .then((movies) => {
         setMovies(movies);
         setLoading(false);
+        setError(null);
       })
       .catch((error) => {
         console.warn(error.message);
         setError('Something went wrong!');
         setLoading(false);
+        setMovies(null);
       });
   };
 
