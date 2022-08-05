@@ -16,7 +16,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getMovies()
+    getMovies('/movie/popular')
       .then((movies) => {
         setMovies(movies);
         setLoading(false);
@@ -28,11 +28,24 @@ const App = () => {
       });
   }, []);
 
+  const searchMovies = (searchInput) => {
+    getMovies('/search/movie', searchInput)
+      .then((movies) => {
+        setMovies(movies);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.warn(error.message);
+        setError('Something went wrong!');
+        setLoading(false);
+      });
+  };
+
   return (
     <div className='App'>
       <GlobalStyle />
 
-      <Navbar />
+      <Navbar searchMovies={searchMovies} />
 
       <main>
         {error && <Error errorMessage={error} />}

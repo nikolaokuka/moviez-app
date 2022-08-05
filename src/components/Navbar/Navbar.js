@@ -2,11 +2,11 @@ import {NavbarContainer} from './Navbar.styles';
 import Logo from '../Logo/Logo';
 import SearchBar from '../SearchBar/SearchBar';
 
-const Navbar = () => {
+const Navbar = ({searchMovies}) => {
   return (
     <NavbarContainer>
       <Logo />
-      <SearchBar />
+      <SearchBar searchMovies={searchMovies} />
     </NavbarContainer>
   );
 };

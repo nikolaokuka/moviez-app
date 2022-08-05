@@ -2,7 +2,7 @@ import {useState} from 'react';
 
 import {SearchForm, Input, ButtonSearch} from './SearchBar.styles';
 
-const SearchBar = () => {
+const SearchBar = ({searchMovies}) => {
   const [searchInput, setSearchInput] = useState('');
 
   const handleChange = (event) => {
@@ -11,13 +11,13 @@ const SearchBar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // search movies here
+    searchMovies(searchInput);
   };
 
   return (
     <SearchForm onSubmit={handleSubmit}>
       <Input
+        required
         type="search"
         placeholder="search moviez"
         value={searchInput}

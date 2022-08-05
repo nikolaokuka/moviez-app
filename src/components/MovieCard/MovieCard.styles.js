@@ -9,13 +9,35 @@ export const MovieCardContainer = styled.div`
 
 export const PosterContainer = styled.div`
   position: relative;
+  height: 35rem;
 `;
 
 export const Poster = styled.img`
   width: 100%;
+  height: 100%;
   border-radius: 3px;
   cursor: pointer;
   display: block;
+`;
+
+export const PosterPlaceholder = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  font-size: 2rem;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    margin-bottom: .5rem;
+  }
 `;
 
 export const Overview = styled.div`

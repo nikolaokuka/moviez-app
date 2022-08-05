@@ -1,6 +1,6 @@
-export const calculateTitle = (title) => {
-  if (title.length <= 20) {
-    return title;
+export const calculateText = (text, value) => {
+  if (text.length <= value) {
+    return text;
   }
-  return `${title.substring(0, 20)}...`;
+  return `${text.substring(0, value)}...`;
 };

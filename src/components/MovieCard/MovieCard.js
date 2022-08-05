@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {FaStar, FaUsers} from 'react-icons/fa';
 
 import {imageUrl} from '../../utils/api';
-import {calculateTitle} from '../../utils/helpers';
+import {calculateText} from '../../utils/helpers';
 
 import {
   MovieCardContainer,
@@ -14,6 +14,7 @@ import {
   Value,
   Overview,
   PosterContainer,
+  PosterPlaceholder,
   ButtonContainer,
   ButtonOverview,
   ButtonCloseOverview,
@@ -21,7 +22,8 @@ import {
 
 const MovieCard = ({movie}) => {
   const {title, poster_path, overview, vote_average, vote_count} = movie;
-  const titleToShow = calculateTitle(title);
+  const titleToShow = calculateText(title, 20);
+  const overviewToShow = calculateText(overview, 300);
   const [showOverview, setShowOverview] = useState(false);
 
   const toggleOverview = () => {
@@ -38,12 +40,16 @@ const MovieCard = ({movie}) => {
         {titleToShow}
       </Title>
       <PosterContainer>
-        <Poster
-          src={`${imageUrl}/${poster_path}`}
-          alt="movie poster"
-        />
+        {poster_path
+          ? <Poster src={`${imageUrl}/${poster_path}`} alt="movie poster" />
+          : <PosterPlaceholder>
+            <span>poster</span>
+            <span>not</span>
+            <span>found</span>
+          </PosterPlaceholder>
+        }
         <Overview show={showOverview}>
-          {overview}
+          {overviewToShow}
           <ButtonCloseOverview onClick={closeOverview} />
         </Overview>
       </PosterContainer>
