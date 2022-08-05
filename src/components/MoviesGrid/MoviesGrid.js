@@ -1,9 +1,15 @@
+import MovieCard from '../MovieCard/MovieCard';
 import {MoviesGridContainer} from './MoviesGrid.styles';
 
 const MoviesGrid = ({movies}) => {
   return (
     <MoviesGridContainer>
-      <pre>{JSON.stringify(movies, null, 2)}</pre>
+      {movies.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+        />
+      ))}
     </MoviesGridContainer>
   );
 };
