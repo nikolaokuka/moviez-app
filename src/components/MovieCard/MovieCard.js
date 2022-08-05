@@ -20,7 +20,7 @@ import {
   ButtonCloseOverview,
 } from './MovieCard.styles';
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({movie, selectMovie}) => {
   const {title, poster_path, overview, vote_average, vote_count} = movie;
   const titleToShow = calculateText(title, 20);
   const overviewToShow = calculateText(overview, 300);
@@ -34,14 +34,18 @@ const MovieCard = ({movie}) => {
     setShowOverview(false);
   };
 
+  const handleSelectMovie = () => {
+    selectMovie(movie);
+  };
+
   return (
     <MovieCardContainer>
-      <Title title={title}>
+      <Title title={title} onClick={handleSelectMovie}>
         {titleToShow}
       </Title>
       <PosterContainer>
         {poster_path
-          ? <Poster src={`${imageUrl}/${poster_path}`} alt="movie poster" />
+          ? <Poster src={`${imageUrl}/w500/${poster_path}`} alt="movie poster" />
           : <PosterPlaceholder>
             <span>poster</span>
             <span>not</span>

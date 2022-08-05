@@ -7,13 +7,15 @@ import MoviesGrid from './components/MoviesGrid/MoviesGrid';
 import Loader from './components/Loader/Loader';
 import Footer from './components/Footer/Footer';
 import Error from './components/Error/Error';
+import PlayerBackdrop from './components/PlayerBackdrop/PlayerBackdrop';
 
 import {getMovies} from './utils/api';
 
 const App = () => {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState({});
 
   useEffect(() => {
     getMovies('/movie/popular')
@@ -21,6 +23,7 @@ const App = () => {
         setMovies(movies);
         setLoading(false);
         setError(null);
+        setSelected(movies[0]);
       })
       .catch((error) => {
         console.warn(error.message);
@@ -36,6 +39,7 @@ const App = () => {
         setMovies(movies);
         setLoading(false);
         setError(null);
+        setSelected(movies[0]);
       })
       .catch((error) => {
         console.warn(error.message);
@@ -43,6 +47,13 @@ const App = () => {
         setLoading(false);
         setMovies(null);
       });
+
+    setSelected(movies[0]);
+  };
+
+  const selectMovie = (movie) => {
+    console.log(movie);
+    setSelected(movie);
   };
 
   return (
@@ -52,9 +63,10 @@ const App = () => {
       <Navbar searchMovies={searchMovies} />
 
       <main>
+        <PlayerBackdrop movie={selected} />
         {error && <Error errorMessage={error} />}
         {loading && <Loader />}
-        {movies && <MoviesGrid movies={movies} />}
+        <MoviesGrid movies={movies} selectMovie={selectMovie} />
       </main>
 
       <Footer />
