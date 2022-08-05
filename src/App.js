@@ -31,7 +31,7 @@ const App = () => {
   }, []);
 
   const searchMovies = (searchInput) => {
-    getMovies('/search/ovie', searchInput)
+    getMovies('/search/movie', searchInput)
       .then((movies) => {
         setMovies(movies);
         setLoading(false);

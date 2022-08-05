@@ -12,6 +12,7 @@ const SearchBar = ({searchMovies}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     searchMovies(searchInput);
+    setSearchInput('');
   };
 
   return (
