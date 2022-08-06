@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
 export const LogoContainer = styled.div`
+  flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+    padding: 0 2rem;
+  }
 `;
 
 export const Text = styled.h1`

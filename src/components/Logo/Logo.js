@@ -1,9 +1,15 @@
 import {LogoContainer, Text} from './Logo.styles';
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 
 const Logo = () => {
+  const reloadPage = () => {
+    window.location.reload();
+  };
+
   return (
-    <LogoContainer onClick={() => window.location.reload()}>
-      <Text>Moviez</Text>
+    <LogoContainer>
+      <Text onClick={reloadPage}>Moviez</Text>
+      <ThemeSwitch />
     </LogoContainer>
   );
 };

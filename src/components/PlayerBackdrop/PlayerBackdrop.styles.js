@@ -14,6 +14,11 @@ export const PlayerBackdropContainer = styled.div`
   padding: 10rem;
   margin-bottom: 2rem;
   border-radius: 3px;
+
+  @media only screen and (max-width: 900px) {
+    height: 30rem;
+    align-items: center;
+  }
 `;
 
 export const ButtonPlay = styled.button`
@@ -38,10 +43,18 @@ export const Title = styled.h1`
   font-size: 4rem;
   color: #fff;
   text-shadow: 0 0 2px #000;
+
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
 `;
 
 export const Tagline = styled.p`
   font-size: 2rem;
   color: #fff;
   text-shadow: 0 0 2px #000;
+
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
 `;

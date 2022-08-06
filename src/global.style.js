@@ -18,8 +18,13 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
   }
 
+  .App {
+    width: 100%;
+    min-height: 100vh;
+  }
+
   .wrapp {
-    max-width: 120rem;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -36,5 +41,15 @@ export const GlobalStyle = createGlobalStyle`
   .dark {
     background-color: #1c2022;
     color: #dadada;
+  }
+
+  @media only screen and (max-width: 900px) {
+    .wrapp {
+      width: 100%;
+    }
+
+    main {
+      margin-top: 20rem;
+    }
   }
 `;

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-export const SearchContainer = styled.div`
+export const SearchForm = styled.form`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Input = styled.input`
@@ -16,6 +17,10 @@ export const Input = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   color: ${({theme}) => theme === 'dark' ? '#eee' : '#1c2022'};
   background-color: ${({theme}) => theme === 'dark' ? '#131617' : '#fff'};
+
+  @media only screen and (max-width: 600px) {
+    width: 22rem;
+  }
 `;
 
 export const ButtonSearch = styled.button`
