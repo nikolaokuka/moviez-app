@@ -5,7 +5,7 @@ import {setPlaying} from '../../store/features/movies/moviesSlice';
 import {PlayerContainer, ButtonClose, YouTubePlayer} from './Player.styles';
 
 const Player = () => {
-  const {selectedMovie} = useSelector((state) => state.movies);
+  const {selectedMovie} = useSelector((state) => state.moviesSlice);
   const dispatch = useDispatch();
 
   const trailer = selectedMovie.videos.results.find((video) => video.name === 'Official Trailer');

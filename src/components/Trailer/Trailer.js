@@ -4,7 +4,7 @@ import Player from '../Player/Player';
 import PlayerBackdrop from '../PlayerBackdrop/PlayerBackdrop';
 
 const Trailer = () => {
-  const {selectedMovie, playing} = useSelector((state) => state.movies);
+  const {selectedMovie, playing} = useSelector((state) => state.moviesSlice);
 
   return (
     <div>

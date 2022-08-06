@@ -5,7 +5,7 @@ import {setPlaying} from '../../store/features/movies/moviesSlice';
 import {PlayerBackdropContainer, ButtonPlay, Title, Tagline} from './PlayerBackdrop.styles';
 
 const PlayerBackdrop = () => {
-  const {selectedMovie} = useSelector((state) => state.movies);
+  const {selectedMovie} = useSelector((state) => state.moviesSlice);
   const dispatch = useDispatch();
 
   const startPlaying = () => {

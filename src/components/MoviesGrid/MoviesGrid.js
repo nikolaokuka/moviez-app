@@ -5,7 +5,7 @@ import MovieCard from '../MovieCard/MovieCard';
 import {MoviesGridContainer} from './MoviesGrid.styles';
 
 const MoviesGrid = () => {
-  const {movies} = useSelector((state) => state.movies);
+  const {movies} = useSelector((state) => state.moviesSlice);
 
   return (
     <MoviesGridContainer>

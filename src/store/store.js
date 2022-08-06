@@ -2,7 +2,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import {persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import moviesReducer from './features/movies/moviesSlice';
+import moviesSlice from './features/movies/moviesSlice';
 import themeSlice from './features/theme/themeSlice';
 
 const persistConfig = {
@@ -14,7 +14,7 @@ const persistedReducer = persistReducer(persistConfig, themeSlice);
 
 export const store = configureStore({
   reducer: {
-    movies: moviesReducer,
+    moviesSlice,
     themeSlice: persistedReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({

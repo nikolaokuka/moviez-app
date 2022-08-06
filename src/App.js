@@ -13,7 +13,7 @@ import {getMovies} from './store/features/movies/moviesSlice';
 import {GlobalStyle} from './global.style';
 
 const App = () => {
-  const {error, loading} = useSelector((state) => state.movies);
+  const {error, loading} = useSelector((state) => state.moviesSlice);
   const {theme} = useSelector((state) => state.themeSlice);
   const dispatch = useDispatch();
 
