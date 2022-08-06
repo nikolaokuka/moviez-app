@@ -8,7 +8,7 @@ export const NavbarContainer = styled.nav`
   height: 10rem;
   position: fixed;
   top: 0;
-  background-color: #fff;
+  background-color: ${({theme}) => theme === 'dark' ? '#1c2022' : '#fff'};
   z-index: 9999;
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `;

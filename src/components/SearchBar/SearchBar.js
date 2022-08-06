@@ -1,13 +1,16 @@
 import {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 
 import {getMovies} from '../../store/features/movies/moviesSlice';
 
-import {SearchForm, Input, ButtonSearch} from './SearchBar.styles';
+import {SearchContainer, Input, ButtonSearch} from './SearchBar.styles';
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
   const dispatch = useDispatch();
+  const {theme} = useSelector((state) => state.themeSlice);
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);
@@ -26,16 +29,20 @@ const SearchBar = () => {
   };
 
   return (
-    <SearchForm onSubmit={handleSubmit}>
-      <Input
-        required
-        type="search"
-        placeholder="search moviez"
-        value={searchInput}
-        onChange={handleChange}
-      />
-      <ButtonSearch>Search</ButtonSearch>
-    </SearchForm>
+    <SearchContainer>
+      <ThemeSwitch />
+      <form onSubmit={handleSubmit}>
+        <Input
+          required
+          type="search"
+          placeholder="search moviez"
+          value={searchInput}
+          onChange={handleChange}
+          theme={theme}
+        />
+        <ButtonSearch>Search</ButtonSearch>
+      </form>
+    </SearchContainer>
   );
 };
 

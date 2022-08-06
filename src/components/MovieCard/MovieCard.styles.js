@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {AiOutlineCloseCircle} from 'react-icons/ai';
 
 export const MovieCardContainer = styled.div`
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: ${({theme}) => theme === 'dark' ? '#131617' : 'rgba(0, 0, 0, 0.08)'};
   border-radius: 3px;
   padding: 2rem;
 `;
@@ -124,7 +124,8 @@ export const ButtonContainer = styled.div`
 
 export const ButtonOverview = styled.button`
   background: none;
-  border: 1px solid #000;
+  color: ${({theme}) => theme === 'dark' ? '#9d8400' : '#000'};
+  border: 1px solid ${({theme}) => theme === 'dark' ? '#9d8400' : '#000'};
   border-radius: 1rem;
   font-size: 1.2rem;
   padding: 1rem;

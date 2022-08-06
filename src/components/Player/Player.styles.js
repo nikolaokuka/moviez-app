@@ -17,7 +17,7 @@ export const YouTubePlayer = styled(YouTube)`
 export const ButtonClose = styled.button`
   width: 10rem;
   height: 4rem;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   border-radius: 3px;
   background: transparent;
   outline: none;
