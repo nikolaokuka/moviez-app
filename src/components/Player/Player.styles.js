@@ -11,6 +11,10 @@ export const YouTubePlayer = styled(YouTube)`
     width: 100%;
     height: 50rem;
     border-radius: 3px;
+
+    @media only screen and (max-width: 900px) {
+      height: 30rem;
+    }
   }
 `;
 
