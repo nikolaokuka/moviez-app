@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <div className={`App ${theme}`}>
-      <div className={`wrapp`}>
+      <div className='wrapp'>
         <GlobalStyle />
 
         <Navbar />

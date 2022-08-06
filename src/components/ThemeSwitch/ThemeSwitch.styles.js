@@ -10,4 +10,8 @@ export const ReactThemeSwitch = styled(Switch)`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  @media only screen and (max-width: 600px) {
+    margin-right: 0;
+  }
 `;

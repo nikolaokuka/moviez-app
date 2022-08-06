@@ -1,11 +1,9 @@
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
-
 import {getMovies} from '../../store/features/movies/moviesSlice';
 
-import {SearchContainer, Input, ButtonSearch} from './SearchBar.styles';
+import {SearchForm, Input, ButtonSearch} from './SearchBar.styles';
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -29,20 +27,17 @@ const SearchBar = () => {
   };
 
   return (
-    <SearchContainer>
-      <ThemeSwitch />
-      <form onSubmit={handleSubmit}>
-        <Input
-          required
-          type="search"
-          placeholder="search moviez"
-          value={searchInput}
-          onChange={handleChange}
-          theme={theme}
-        />
-        <ButtonSearch>Search</ButtonSearch>
-      </form>
-    </SearchContainer>
+    <SearchForm onSubmit={handleSubmit}>
+      <Input
+        required
+        type="search"
+        placeholder="search moviez"
+        value={searchInput}
+        onChange={handleChange}
+        theme={theme}
+      />
+      <ButtonSearch>Search</ButtonSearch>
+    </SearchForm>
   );
 };
 
