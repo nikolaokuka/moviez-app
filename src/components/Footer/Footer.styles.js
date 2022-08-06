@@ -9,5 +9,5 @@ export const FooterContainer = styled.footer`
   font-size: 1.5rem;
   font-weight: 700;
   color: #bb2e1f;
-  border-top: 1px solid #dadada;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
 `;

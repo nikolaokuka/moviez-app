@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
   }
 
-  .App {
+  .wrapp {
     max-width: 120rem;
     margin: 0 auto;
     display: flex;
@@ -31,5 +31,10 @@ export const GlobalStyle = createGlobalStyle`
     padding: 2rem 0;
     position: relative;
     flex: 1;
+  }
+
+  .dark {
+    background-color: #1c2022;
+    color: #dadada;
   }
 `;

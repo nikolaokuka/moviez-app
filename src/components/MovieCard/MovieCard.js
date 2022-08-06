@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {FaStar, FaUsers} from 'react-icons/fa';
 
 import {imageUrl} from '../../utils/api';
@@ -28,6 +28,7 @@ const MovieCard = ({movie}) => {
   const overviewToShow = calculateText(overview, 300);
   const [showOverview, setShowOverview] = useState(false);
   const dispatch = useDispatch();
+  const {theme} = useSelector((state) => state.themeSlice);
 
   const toggleOverview = () => {
     setShowOverview(!showOverview);
@@ -44,7 +45,7 @@ const MovieCard = ({movie}) => {
   };
 
   return (
-    <MovieCardContainer>
+    <MovieCardContainer theme={theme}>
       <Title title={title} onClick={() => selectMovie(id)}>
         {titleToShow}
       </Title>
@@ -80,7 +81,12 @@ const MovieCard = ({movie}) => {
       </Rating>
 
       <ButtonContainer>
-        <ButtonOverview onClick={toggleOverview}>Plot Summary</ButtonOverview>
+        <ButtonOverview
+          onClick={toggleOverview}
+          theme={theme}
+        >
+          Plot Summary
+        </ButtonOverview>
       </ButtonContainer>
     </MovieCardContainer>
   );

@@ -14,6 +14,7 @@ import {GlobalStyle} from './global.style';
 
 const App = () => {
   const {error, loading} = useSelector((state) => state.movies);
+  const {theme} = useSelector((state) => state.themeSlice);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,19 +22,21 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div className='App'>
-      <GlobalStyle />
+    <div className={`App ${theme}`}>
+      <div className={`wrapp`}>
+        <GlobalStyle />
 
-      <Navbar />
+        <Navbar />
 
-      <main>
-        {!error && !loading && <Trailer />}
-        {error && <Error />}
-        {loading && <Loader />}
-        <MoviesGrid />
-      </main>
+        <main>
+          {!error && !loading && <Trailer />}
+          {error && <Error />}
+          {loading && <Loader />}
+          <MoviesGrid />
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };
