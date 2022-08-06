@@ -1,22 +1,19 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useReducer} from 'react';
 
 import Navbar from './components/Navbar/Navbar';
-
-import {GlobalStyle} from './global.style';
 import MoviesGrid from './components/MoviesGrid/MoviesGrid';
 import Loader from './components/Loader/Loader';
 import Footer from './components/Footer/Footer';
 import Error from './components/Error/Error';
-import PlayerBackdrop from './components/PlayerBackdrop/PlayerBackdrop';
-import Player from './components/Player/Player';
+import Trailer from './components/Trailer/Trailer';
 
 import {getMovies, getMovie} from './utils/api';
+import {moviesReducer, moviesInitialState} from './reducers/moviesReducer';
+
+import {GlobalStyle} from './global.style';
 
 const App = () => {
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [selected, setSelected] = useState({});
+  const [state, dispatch] = useReducer(moviesReducer, moviesInitialState);
   const [play, setPlay] = useState(false);
 
   useEffect(() => {
@@ -24,24 +21,23 @@ const App = () => {
   }, []);
 
   const fetchMovies = async (endpoint = '/movie/popular', searchInput) => {
+    dispatch({type: 'fetching'});
+
     try {
       const movies = await getMovies(endpoint, searchInput);
-      setMovies(movies);
-      setLoading(false);
-      setError(null);
+      dispatch({type: 'success', payload: movies});
       await selectMovie(movies[0]);
     } catch (error) {
-      console.log(error.message);
-      setError('Something went wrong!');
-      setLoading(false);
-      setMovies([]);
+      console.warn(error);
+      dispatch({type: 'failure', payload: 'Something went wrong!'});
     }
   };
 
   const selectMovie = async (selected) => {
     const movie = await getMovie(selected.id);
-    setSelected(movie);
+    dispatch({type: 'selectMovie', payload: movie});
     setPlay(false);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   };
 
   const searchMovies = (searchInput) => {
@@ -55,13 +51,17 @@ const App = () => {
       <Navbar searchMovies={searchMovies} />
 
       <main>
-        {play && selected.videos
-          ? <Player movie={selected} setPlay={setPlay} />
-          : <PlayerBackdrop movie={selected} setPlay={setPlay} />
+        {!state.error && !state.loading &&
+          <Trailer
+            isPlay={play}
+            isVideosExist={state.selectedMovie.videos}
+            movie={state.selectedMovie}
+            setPlay={setPlay}
+          />
         }
-        {error && <Error errorMessage={error} />}
-        {loading && <Loader />}
-        <MoviesGrid movies={movies} selectMovie={selectMovie} />
+        {state.error && <Error errorMessage={state.error} />}
+        {state.loading && <Loader />}
+        <MoviesGrid movies={state.movies} selectMovie={selectMovie} />
       </main>
 
       <Footer />
