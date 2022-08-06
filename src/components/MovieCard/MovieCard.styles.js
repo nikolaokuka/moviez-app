@@ -10,6 +10,7 @@ export const MovieCardContainer = styled.div`
 export const PosterContainer = styled.div`
   position: relative;
   height: 35rem;
+  cursor: pointer;
 `;
 
 export const Poster = styled.img`

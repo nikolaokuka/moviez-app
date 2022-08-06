@@ -43,7 +43,7 @@ const MovieCard = ({movie, selectMovie}) => {
       <Title title={title} onClick={handleSelectMovie}>
         {titleToShow}
       </Title>
-      <PosterContainer>
+      <PosterContainer onClick={handleSelectMovie}>
         {poster_path
           ? <Poster src={`${imageUrl}/w500/${poster_path}`} alt="movie poster" />
           : <PosterPlaceholder>

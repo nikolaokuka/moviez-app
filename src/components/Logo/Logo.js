@@ -2,7 +2,7 @@ import {LogoContainer, Text} from './Logo.styles';
 
 const Logo = () => {
   return (
-    <LogoContainer>
+    <LogoContainer onClick={() => window.location.reload()}>
       <Text>Moviez</Text>
     </LogoContainer>
   );

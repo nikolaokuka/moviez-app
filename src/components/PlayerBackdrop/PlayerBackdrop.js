@@ -1,10 +1,20 @@
-import {PlayerBackdropContainer, ButtonPlay, Title} from './PlayerBackdrop.styles';
+import {PlayerBackdropContainer, ButtonPlay, Title, Tagline} from './PlayerBackdrop.styles';
 
-const PlayerBackdrop = ({movie}) => {
+const PlayerBackdrop = ({movie, setPlay}) => {
+  const handlePlay = () => {
+    setPlay(true);
+  };
+
   return (
     <PlayerBackdropContainer path={movie.backdrop_path}>
-      <ButtonPlay>Play</ButtonPlay>
+      <ButtonPlay
+        type='button'
+        onClick={handlePlay}
+      >
+        Play Trailer
+      </ButtonPlay>
       <Title>{movie.title}</Title>
+      <Tagline>{movie.tagline}</Tagline>
     </PlayerBackdropContainer>
   );
 };

@@ -18,10 +18,9 @@ export const PlayerBackdropContainer = styled.div`
 
 export const ButtonPlay = styled.button`
   width: 15rem;
-  height: 5rem;
-  font-size: 1.7rem;
-  text-transform: uppercase;
-  padding: 1rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: #fff;
   background-color: #000;
   border: 1px solid #fff;
@@ -35,8 +34,14 @@ export const ButtonPlay = styled.button`
 `;
 
 export const Title = styled.h1`
-  margin: 2rem 0;
-  font-size: 3.5rem;
+  margin: 3rem 0;
+  font-size: 4rem;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+`;
+
+export const Tagline = styled.p`
+  font-size: 2rem;
   color: #fff;
   text-shadow: 0 0 2px #000;
 `;
