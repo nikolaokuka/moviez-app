@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/moviez-app/static/js/main.6f9772d6.js",
+    "main.js": "/moviez-app/static/js/main.c48a2a7d.js",
     "static/js/787.a575b5a8.chunk.js": "/moviez-app/static/js/787.a575b5a8.chunk.js",
     "index.html": "/moviez-app/index.html",
-    "main.6f9772d6.js.map": "/moviez-app/static/js/main.6f9772d6.js.map",
+    "main.c48a2a7d.js.map": "/moviez-app/static/js/main.c48a2a7d.js.map",
     "787.a575b5a8.chunk.js.map": "/moviez-app/static/js/787.a575b5a8.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.6f9772d6.js"
+    "static/js/main.c48a2a7d.js"
   ]
 }
