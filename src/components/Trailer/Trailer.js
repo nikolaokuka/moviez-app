@@ -1,12 +1,16 @@
+import {useSelector} from 'react-redux';
+
 import Player from '../Player/Player';
 import PlayerBackdrop from '../PlayerBackdrop/PlayerBackdrop';
 
-const Trailer = ({isPlay, isVideosExist, movie, setPlay}) => {
+const Trailer = () => {
+  const {selectedMovie, playing} = useSelector((state) => state.movies);
+
   return (
     <div>
-      {isPlay && isVideosExist
-        ? <Player movie={movie} setPlay={setPlay} />
-        : <PlayerBackdrop movie={movie} setPlay={setPlay} />
+      {playing && selectedMovie.videos
+        ? <Player />
+        : <PlayerBackdrop />
       }
     </div>
   );

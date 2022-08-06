@@ -1,20 +1,27 @@
+import {useSelector, useDispatch} from 'react-redux';
+
+import {setPlaying} from '../../store/features/movies/moviesSlice';
+
 import {PlayerBackdropContainer, ButtonPlay, Title, Tagline} from './PlayerBackdrop.styles';
 
-const PlayerBackdrop = ({movie, setPlay}) => {
-  const handlePlay = () => {
-    setPlay(true);
+const PlayerBackdrop = () => {
+  const {selectedMovie} = useSelector((state) => state.movies);
+  const dispatch = useDispatch();
+
+  const startPlaying = () => {
+    dispatch(setPlaying(true));
   };
 
   return (
-    <PlayerBackdropContainer path={movie.backdrop_path}>
+    <PlayerBackdropContainer path={selectedMovie.backdrop_path}>
       <ButtonPlay
         type='button'
-        onClick={handlePlay}
+        onClick={startPlaying}
       >
         Play Trailer
       </ButtonPlay>
-      <Title>{movie.title}</Title>
-      <Tagline>{movie.tagline}</Tagline>
+      <Title>{selectedMovie.title}</Title>
+      <Tagline>{selectedMovie.tagline}</Tagline>
     </PlayerBackdropContainer>
   );
 };
