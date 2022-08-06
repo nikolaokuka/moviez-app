@@ -1,4 +1,5 @@
-import {useEffect, useState, useReducer} from 'react';
+import {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 import Navbar from './components/Navbar/Navbar';
 import MoviesGrid from './components/MoviesGrid/MoviesGrid';
@@ -7,61 +8,29 @@ import Footer from './components/Footer/Footer';
 import Error from './components/Error/Error';
 import Trailer from './components/Trailer/Trailer';
 
-import {getMovies, getMovie} from './utils/api';
-import {moviesReducer, moviesInitialState} from './reducers/moviesReducer';
+import {getMovies} from './store/features/movies/moviesSlice';
 
 import {GlobalStyle} from './global.style';
 
 const App = () => {
-  const [state, dispatch] = useReducer(moviesReducer, moviesInitialState);
-  const [play, setPlay] = useState(false);
+  const {error, loading} = useSelector((state) => state.movies);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchMovies(); // eslint-disable-next-line
-  }, []);
-
-  const fetchMovies = async (endpoint = '/movie/popular', searchInput) => {
-    dispatch({type: 'fetching'});
-
-    try {
-      const movies = await getMovies(endpoint, searchInput);
-      dispatch({type: 'success', payload: movies});
-      await selectMovie(movies[0]);
-    } catch (error) {
-      console.warn(error);
-      dispatch({type: 'failure', payload: 'Something went wrong!'});
-    }
-  };
-
-  const selectMovie = async (selected) => {
-    const movie = await getMovie(selected.id);
-    dispatch({type: 'selectMovie', payload: movie});
-    setPlay(false);
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-  };
-
-  const searchMovies = (searchInput) => {
-    fetchMovies('/search/movie', searchInput);
-  };
+    dispatch(getMovies({path: '/movie/popular'}));
+  }, [dispatch]);
 
   return (
     <div className='App'>
       <GlobalStyle />
 
-      <Navbar searchMovies={searchMovies} />
+      <Navbar />
 
       <main>
-        {!state.error && !state.loading &&
-          <Trailer
-            isPlay={play}
-            isVideosExist={state.selectedMovie.videos}
-            movie={state.selectedMovie}
-            setPlay={setPlay}
-          />
-        }
-        {state.error && <Error errorMessage={state.error} />}
-        {state.loading && <Loader />}
-        <MoviesGrid movies={state.movies} selectMovie={selectMovie} />
+        {!error && !loading && <Trailer />}
+        {error && <Error />}
+        {loading && <Loader />}
+        <MoviesGrid />
       </main>
 
       <Footer />

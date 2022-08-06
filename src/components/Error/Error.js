@@ -1,9 +1,13 @@
+import {useSelector} from 'react-redux';
+
 import {ErrorContainer} from './Error.styles';
 
-const Error = ({errorMessage}) => {
+const Error = () => {
+  const {error} = useSelector((state) => state.movies);
+
   return (
     <ErrorContainer>
-      {errorMessage}
+      {error}
     </ErrorContainer>
   );
 };

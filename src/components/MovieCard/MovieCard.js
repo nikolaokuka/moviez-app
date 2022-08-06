@@ -1,8 +1,10 @@
 import {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {FaStar, FaUsers} from 'react-icons/fa';
 
 import {imageUrl} from '../../utils/api';
 import {calculateText} from '../../utils/helpers';
+import {getMovie, setPlaying} from '../../store/features/movies/moviesSlice';
 
 import {
   MovieCardContainer,
@@ -20,11 +22,12 @@ import {
   ButtonCloseOverview,
 } from './MovieCard.styles';
 
-const MovieCard = ({movie, selectMovie}) => {
-  const {title, poster_path, overview, vote_average, vote_count} = movie;
+const MovieCard = ({movie}) => {
+  const {id, title, poster_path, overview, vote_average, vote_count} = movie;
   const titleToShow = calculateText(title, 20);
   const overviewToShow = calculateText(overview, 300);
   const [showOverview, setShowOverview] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleOverview = () => {
     setShowOverview(!showOverview);
@@ -34,16 +37,18 @@ const MovieCard = ({movie, selectMovie}) => {
     setShowOverview(false);
   };
 
-  const handleSelectMovie = () => {
-    selectMovie(movie);
+  const selectMovie = (id) => {
+    dispatch(getMovie(id));
+    dispatch(setPlaying(false));
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   };
 
   return (
     <MovieCardContainer>
-      <Title title={title} onClick={handleSelectMovie}>
+      <Title title={title} onClick={() => selectMovie(id)}>
         {titleToShow}
       </Title>
-      <PosterContainer onClick={handleSelectMovie}>
+      <PosterContainer onClick={() => selectMovie(id)}>
         {poster_path
           ? <Poster src={`${imageUrl}/w500/${poster_path}`} alt="movie poster" />
           : <PosterPlaceholder>
