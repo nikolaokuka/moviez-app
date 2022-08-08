@@ -12,10 +12,10 @@ You can see the application live by visiting following link: [MOVIEZ](https://ni
 In your terminal type the following commands:
 
 ```js
-	git clone git@github.com:nikolaokuka/moviez-app.git
-	cd moviez-app
-	yarn install
-	yarn start
+git clone git@github.com:nikolaokuka/moviez-app.git
+cd moviez-app
+yarn install
+yarn start
 ```
 
 **NOTE:** use yarn 1 (classic)
